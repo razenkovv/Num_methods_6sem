@@ -24,14 +24,14 @@ x_max = 4.5
 t_start = 0.0
 t_max = (x_max - 1.5) / speed
 
-h = 0.001
+h = 0.01
 courant = 0.7
 tau = courant * h / speed
 
 frames_per_save = 1
 
 method = Method.UPWIND.name
-func = Function.PARABOLA.name
+func = Function.SIN_FUNC.name
 
 # ------
 

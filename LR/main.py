@@ -7,7 +7,7 @@ from calc import calc
 init = header.phi(np.arange(header.x_min, header.x_max, header.h))
 
 # в первой строке записывается x_axis
-with open(f'data/{header.method}_{header.func}_h={header.h}_c={header.courant}.csv', 'w', newline='') as f:
+with open(f'data/{header.method}_{header.func}_h={header.h}_c={header.courant}_frpersave={header.frames_per_save}.csv', 'w', newline='') as f:
     res = init
     csv.writer(f, delimiter=',').writerow(np.arange(header.x_min, header.x_max, header.h))
     csv.writer(f, delimiter=',').writerow(res)
