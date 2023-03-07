@@ -17,10 +17,19 @@ def calc(courant, init, pattern_type, timesteps):
     """
     u = init
     u_next = np.zeros_like(init)
-    if pattern_type == header.Method.UPWIND.name:
+
+    if pattern_type == 'UPWIND':
         for j, _ in enumerate(timesteps[:-1]):
             for i in range(1, len(u) - 1):
                 u_next[i] = courant * (u[i - 1] - u[i]) + u[i]
             u_next[0] = header.mu(timesteps[j+1])
             u, u_next = u_next, u
+
+    elif pattern_type == 'LAX_WN':
+        for j, _ in enumerate(timesteps[:-1]):
+            for i in range(1, len(u) - 1):
+                u_next[i] = 0.5 * courant**2 * (u[i+1] - 2*u[i] + u[i-1]) - 0.5 * courant * (u[i+1] - u[i-1]) + u[i]
+            u_next[0] = header.mu(timesteps[j+1])
+            u, u_next = u_next, u
+
     return u

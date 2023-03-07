@@ -13,5 +13,5 @@ with open(f'data/{header.method}_{header.func}_h={header.h}_c={header.courant}_f
     csv.writer(f, delimiter=',').writerow(res)
     timesteps = np.arange(header.t_start, header.t_max, header.tau)
     for i, _ in enumerate(timesteps[:-1*header.frames_per_save:header.frames_per_save]):
-        res = calc(header.courant, res, header.Method.UPWIND.name, timesteps[i*header.frames_per_save:(i+1)*header.frames_per_save+1])
+        res = calc(header.courant, res, 'LAX_WN', timesteps[i*header.frames_per_save:(i+1)*header.frames_per_save+1])
         csv.writer(f, delimiter=',').writerow(res)

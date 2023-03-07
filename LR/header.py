@@ -30,8 +30,8 @@ tau = courant * h / speed
 
 frames_per_save = 1
 
-method = Method.UPWIND.name
-func = Function.SIN_FUNC.name
+method = 'LAX_WN'
+func = 'SIN_FUNC'
 
 # ------
 
