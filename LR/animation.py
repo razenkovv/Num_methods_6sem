@@ -34,7 +34,7 @@ with open(f'data/{header.method}_{header.func}_h=0.01_c={header.courant}_frpersa
     line2 = ax[0].plot(x2, y2, label='h=0.001', color='g')[0]
     line3 = ax[0].plot(x1, header.exact(x1, 0.0), label='exact', color='b')[0]
     ax[0].legend()
-    ttl1 = ax[0].text(0.4, 1.05, f'Схема {header.Method.LAX_WN.name}, С={header.courant}, t=0.00', transform=ax[0].transAxes)
+    ttl1 = ax[0].text(0.4, 1.05, f'Схема {header.method}, С={header.courant}, t=0.00', transform=ax[0].transAxes)
 
     t_axis = []
     error1 = []
@@ -57,7 +57,7 @@ with open(f'data/{header.method}_{header.func}_h=0.01_c={header.courant}_frpersa
         line1.set_data(x1, y1)
         line2.set_data(x2, y2)
         line3.set_data(x1, header.exact(x1, frame * header.tau * header.frames_per_save))
-        ttl1.set_text(f'Схема {header.Method.LAX_WN.name}, С={header.courant}, t={frame * header.tau * header.frames_per_save:.2f}')
+        ttl1.set_text(f'Схема {header.method}, С={header.courant}, t={frame * header.tau * header.frames_per_save:.2f}')
 
         _error1 = np.max(np.abs(y1 - header.exact(x1, frame * header.tau * header.frames_per_save)))
         _error2 = np.max(np.abs(y2 - header.exact(x2, frame * header.tau * header.frames_per_save)))

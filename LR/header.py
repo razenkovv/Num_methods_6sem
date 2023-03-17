@@ -30,8 +30,8 @@ tau = courant * h / speed
 
 frames_per_save = 1
 
-method = 'LAX_WN'
-func = 'SIN_FUNC'
+method = 'LAXTVD'
+func = 'STEP_FUNC'
 
 # ------
 
